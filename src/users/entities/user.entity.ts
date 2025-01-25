@@ -1,3 +1,1 @@
-export class User {
-    kf'[piwripg ]
-}
+export class User {}
