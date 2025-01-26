@@ -1,19 +1,16 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Comment } from "src/comments/entities/comment.entity";
+import { ObjectId } from "mongoose";
 
 @Schema({ timestamps: false })
-export class Blog {
-  @Prop({ required: true })
-  title: string;
-
+export class Replies {
   @Prop({ required: true })
   content: string;
 
-  @Prop()
-  tags: string[];
-
-  @Prop()
+  @Prop({ required: true })
   author: string;
+
+  @Prop({ required: true })
+  commentId: ObjectId;
 
   @Prop()
   createdAt: Date;
@@ -28,10 +25,10 @@ export class Blog {
   likedmembers: string[];
 
   @Prop({ default: 0 })
-  commentscount: number;
+  replycount: number;
 
   @Prop()
-  comments: Comment[];
+  replies: Replies[];
 }
 
-export const BlogSchema = SchemaFactory.createForClass(Blog);
+export const RepliesSchema = SchemaFactory.createForClass(Replies);
